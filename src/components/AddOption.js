@@ -34,10 +34,12 @@ class AddOption extends Component<Props, State> {
     const { error } = this.state;
     return (
       <div>
-        {error && <p>{error}</p>}
-        <form onSubmit={this.handleAddOption}>
-          <input type="text" name="option" />
-          <button type="submit">Add Option</button>
+        {error && <p className="add-option-error">{error}</p>}
+        <form className="add-option" onSubmit={this.handleAddOption}>
+          <input className="add-option__input" type="text" name="option" />
+          <button className="button" type="submit">
+            Add Option
+          </button>
         </form>
       </div>
     );

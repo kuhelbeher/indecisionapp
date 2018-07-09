@@ -50,7 +50,7 @@ export default class IndecisionApp extends Component<Props, State> {
     this.setState(() => ({ selectedOption: undefined }));
   };
 
-  handleDeleteOption = optionToRemove => {
+  handleDeleteOption = (optionToRemove: string) => {
     this.setState(prevState => ({
       options: prevState.options.filter(option => optionToRemove !== option),
     }));
@@ -88,13 +88,20 @@ export default class IndecisionApp extends Component<Props, State> {
     return (
       <div>
         <Header />
-        <Action hasOptions={options.length > 0} handlePick={this.handlePick} />
-        <Options
-          options={options}
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteOption={this.handleDeleteOption}
-        />
-        <AddOption handleAddOption={this.handleAddOption} />
+        <div className="container">
+          <Action
+            hasOptions={options.length > 0}
+            handlePick={this.handlePick}
+          />
+          <div className="widget">
+            <Options
+              options={options}
+              handleDeleteOptions={this.handleDeleteOptions}
+              handleDeleteOption={this.handleDeleteOption}
+            />
+            <AddOption handleAddOption={this.handleAddOption} />
+          </div>
+        </div>
         <OptionModal
           selectedOption={selectedOption}
           handleClearSelectedOption={this.handleClearSelectedOption}

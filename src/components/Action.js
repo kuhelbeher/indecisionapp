@@ -9,7 +9,11 @@ type Props = {
 
 const Action = ({ hasOptions, handlePick }: Props) => (
   <div>
-    <button type="button" disabled={!hasOptions} onClick={handlePick}>
+    <button
+      className="big-button"
+      type="button"
+      disabled={!hasOptions}
+      onClick={handlePick}>
       What should I do?
     </button>
   </div>
