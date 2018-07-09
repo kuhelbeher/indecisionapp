@@ -7,7 +7,10 @@ type Props = {
   subtitle: string,
 };
 
-const Header = ({ title, subtitle }: Props) => (
+const Header = ({
+  title = 'Indecision',
+  subtitle = 'Put your life in the hands of a computer',
+}: Props) => (
   <div>
     <h1>{title}</h1>
     <h2>{subtitle}</h2>

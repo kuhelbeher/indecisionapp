@@ -3,9 +3,21 @@
 import React from 'react';
 
 type Props = {
-  option: string,
+  optionText: string,
+  handleDeleteOption: Function,
 };
 
-const Option = ({ option }: Props) => <div>{option}</div>;
+const Option = ({ optionText, handleDeleteOption }: Props) => (
+  <div>
+    {optionText}
+    <button
+      type="button"
+      onClick={() => {
+        handleDeleteOption(optionText);
+      }}>
+      remove
+    </button>
+  </div>
+);
 
 export default Option;

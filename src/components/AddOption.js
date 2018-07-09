@@ -15,18 +15,19 @@ class AddOption extends Component<Props, State> {
     error: null,
   };
 
-  handleAddOption = (e: SyntheticEvent<HTMLFormElement>) => {
+  handleAddOption = (e: SyntheticInputEvent<HTMLFormElement>) => {
     const { handleAddOption } = this.props;
     e.preventDefault();
 
     const option: string = e.target.elements.option.value.trim();
 
     const error = handleAddOption(option);
-    e.target.elements.option.value = '';
 
-    this.setState(() => ({
-      error,
-    }));
+    this.setState(() => ({ error }));
+
+    if (!error) {
+      e.target.elements.option.value = '';
+    }
   };
 
   render() {

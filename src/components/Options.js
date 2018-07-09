@@ -6,15 +6,27 @@ import Option from './Option';
 
 type Props = {
   options: Array<string>,
-  handleRemoveAllOption: Function,
+  handleDeleteOptions: Function,
+  handleDeleteOption: Function,
 };
 
-const Options = ({ options, handleRemoveAllOption }: Props) => (
+const Options = ({
+  options,
+  handleDeleteOptions,
+  handleDeleteOption,
+}: Props) => (
   <div>
-    <button type="button" onClick={handleRemoveAllOption}>
+    <button type="button" onClick={handleDeleteOptions}>
       Remove All
     </button>
-    {options.map(option => <Option key={option} option={option} />)}
+    {options.length === 0 && <p>Please add an option to get started!</p>}
+    {options.map(option => (
+      <Option
+        key={option}
+        optionText={option}
+        handleDeleteOption={handleDeleteOption}
+      />
+    ))}
   </div>
 );
 
